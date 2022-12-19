@@ -36,7 +36,7 @@ $( function() {
                 var chart_data_visits = [];
                 for(i = 0 ;i <= 23; i++){
                     if(response.visits_per_hour.filter(e => e.hour == i).length <= 0){
-                        response.visits_per_hour.splice(i-1, 0,{hour: i.toString(), num:0}); 
+                        response.visits_per_hour.splice(i-1, 0,{hour: i.toString(), num:0}); //index i-1, replace 0, value 0
                     }
                 }
                 for(i = 0; i < response.visits_per_hour.length; i++){

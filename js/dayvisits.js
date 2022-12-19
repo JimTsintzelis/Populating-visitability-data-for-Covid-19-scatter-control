@@ -46,16 +46,16 @@ $( function() {
                
                 var chart_data_visits = [];
                 for(i = 1 ;i <= 7; i++){
-                    if(response.visits_per_day.filter(e => e.day == i).length <= 0){
-                        response.visits_per_day.splice(i-1, 0,{day: i.toString(), num:0}); 
+                    if(response.visits_per_day.filter(e => e.day == i).length <= 0){ //εαν δεν υπαρχουν visits την συγκεκριμενη μέρα
+                        response.visits_per_day.splice(i-1, 0,{day: i.toString(), num:0}); // βάλε στον πίνακα μέρα και 0
                     }
                 }
-                for(i = 0; i < response.visits_per_day.length; i++){
-                    chart_data_visits.push(response.visits_per_day[i].num);
+                for(i = 0; i < response.visits_per_day.length; i++){ //απο 0 εως όλα τα visits κάνε push τον αριθμό
+                    chart_data_visits.push(response.visits_per_day[i].num);// στον πινακα chart
                 }
                 var chart_data_cases = [];
                 for(i = 1 ;i <= 7; i++){
-                    if(response.cases_per_day.filter(e => e.day == i).length <= 0){
+                    if(response.cases_per_day.filter(e => e.day == i).length <= 0){ //
                         response.cases_per_day.splice(i-1, 0,{day: i.toString(), num:0}); 
                     }
                 }
@@ -64,7 +64,7 @@ $( function() {
                 }
                 var ctx = document.getElementById('chart_search').getContext('2d');
                 var myChart = new Chart(ctx, {
-                    type: 'line',
+                    type: 'line', //ενωση με γραμμη
                     data: {
                         labels: labels,
                         datasets: [{
@@ -96,7 +96,7 @@ $( function() {
         });
       });
 
-      function checkChecked(){
+      function checkChecked(){   //checkboxes
             $('#chart_search').show();
           var visitChecked = $('#visitCheck').is(":checked");
           var caseChecked = $('#caseCheck').is(":checked");
